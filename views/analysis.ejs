@@ -196,17 +196,17 @@ $(function () {
             type: 'column'
         },
         title: {
-            text: 'Twitter: Number of followers of popular health & beauty brands and apparel brands 2016'
+            text: 'Twitter: Use of Twitter to monitor attitudes toward depression'
         },
         subtitle: {
-            text: 'Click the columns to view different brands. Source: <a href="https://www.statista.com/topics/737/twitter/">statista.com</a>.'
+            text: 'Click the columns to view tweet % according to locations and users. Source: <a href="https://www.statista.com/topics/737/twitter/">statista.com</a>.'
         },
         xAxis: {
             type: 'category'
         },
         yAxis: {
             title: {
-                text: 'Number of followers in millions'
+                text: 'Tweets %'
             }
 
         },
@@ -229,107 +229,63 @@ $(function () {
         },
 
         series: [{
-            name: 'Brands',
+            name: 'Tweets Depression Analysis',
             colorByPoint: true,
             data: [{
-                name: 'Apparel',
-                y: 56.33,
-                drilldown: 'Apparel'
+                name: 'Locations',
+                y: 63,
+                drilldown: 'Locations'
             }, {
-                name: 'Health and Beauty',
-                y: 8.08,
-                drilldown: 'Health and Beauty'
+                name: 'User Type',
+                y: 35,
+                drilldown: 'User Type'
             }]
         }],
         drilldown: {
             series: [{
-                name: 'Apparel',
-                id: 'Apparel',
+                name: 'Locations',
+                id: 'Locations',
                 data: [
                     [
-                        'Chanel',
-                        12.53
+                        'US',
+                        31
                     ],
                     [
-                        'Victoria\'s Secret',
-                        10.26
+                        'UK',
+                        15
                     ],
                     [
-                        'H&M',
-                        8.22
+                        'Canada',
+                        8
                     ],
                     [
-                        'Marc Jacobs',
-                        7.46
+                        'Australia',
+                        3
                     ],
                     [
-                        'Burberry',
-                        7.3
-                    ],
-                    [
-                        'Dior',
-                        7.08
-                    ],
-                    [
-                        'Louis Vuitton',
-                        5.84
-                    ],
-                    [
-                        'Dolce & Gabbana',
-                        4.3
-                    ],
-                    [
-                        'Gucci',
-                        3.89
-                    ],
-                    [
-                        'Yves Saint Laurent',
-                        3.82
+                        'Asia',
+                        6
                     ]
                 ]
             }, {
-                name: 'Health and Beauty',
-                id: 'Health and Beauty',
+                name: 'User Type',
+                id: 'User Type',
                 data: [
                     [
-                        'MACcosmetics',
-                        1.3
+                        'Health Professional',
+                        9
                     ],
                     [
-                        'George Hane',
-                        0.95
+                        'Mental health advocates',
+                        3
                     ],
                     [
-                        'Urban Decay',
-                        0.94
+                        'Unspecified Individual',
+                        27
                     ],
                     [
-                        'GFuel',
-                        0.91
-                    ],
-                    [
-                        'Benefit Cosmetics',
-                        0.75
-                    ],
-                    [
-                        'NYX Cosmetics',
-                        0.71
-                    ],
-                    [
-                        'Muscle Pharm',
-                        0.68
-                    ],
-                    [
-                        'ASQ Group',
-                        0.66
-                    ],
-                    [
-                        'Covergirl',
-                        0.6
-                    ],
-                    [
-                        'Maybelline New York',
-                        0.58
+                        'Organisations',
+                        25
                     ]
                 ]
             }]
