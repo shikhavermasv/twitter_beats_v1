@@ -1,4 +1,4 @@
-User-Agent: *
+User-agent: *
 Disallow: 
-
+Disallow: /cgi-bin/
 Sitemap: https://twitterbeats.herokuapp.com/sitemap.xml
