@@ -1,6 +1,6 @@
 ---
 applications:
-- name: twitterglobe
+- name: twitterbeats
   memory: 256M
   instances: 1
   env:

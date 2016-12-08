@@ -1,7 +1,7 @@
 {
-  "name": "Twitter Stream Globe",
-  "description": "A real-time 3D visualization of Tweets around the world. Uses three.js (WebGL), Angular & PubNub.",
-  "repository": "https://github.com/twitterdev/twitter-stream-globe",
+  "name": "Twitter Beats",
+  "description": "Twitter Beats - Creative Coders provide twitter feedmap that provides live Twitter feeds  along with a geographic globe.",
+  "repository": "https://github.com/shikhavermasv/twitter_beats_v1",
   "logo": "http://twitter-stream-globe.herokuapp.com/images/Twitter_logo_blue_small.png",
   "keywords": ["node", "express", "threejs", "webgl", "twitter"],
   "env": {
