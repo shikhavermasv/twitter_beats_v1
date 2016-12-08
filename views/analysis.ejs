@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="TweetGlobe">
+  <head>
+    <meta charset="utf-8">
+    <title>Twitter Beats</title>
+      
+<meta name="keywords" content="Sentiment Statistics, Tweet Highcharts, Sentiment Analysis, Prediction, Depression, Tweet Analysis, TwitterBeats, Twitter, Beats">
+    
+    <meta property="twitter:title" content="Twitter Beats" />
+    
+    
+    <meta property="twitter:url" content="https://twitterbeats.herokuapp.com" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Twitter Beats" />
+    <meta property="og:image" content="https://twitterbeats.herokuapp.com/TwitterBeats.png" />
+    <meta property="og:description" content="Twitter Beats Analysis provides High charts  for representing the data referred from statista. It shows number of monthly active users 2010 - 2016" />
+      
+    <meta property="og:url" content="https://twitterbeats.herokuapp.com" />
+    <meta property="og:site_name" content="Twitter Beats" />
+
+      <meta name="description" content="Twitter Beats Analysis provides High charts  for representing the data referred from statista. It shows number of monthly active users 2010 - 2016">
+      
+    <link href='//fonts.googleapis.com/css?family=Lato:300,400,700|Share+Tech+Mono' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='shortcut icon' href='/images/Twitter_logo_blue_small.png' />
+
+    <script src="//platform.twitter.com/widgets.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pubnub/3.6.3/pubnub.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/three.js/r68/three.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/stats.js/r11/Stats.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"/></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.18/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.18/angular-resource.min.js"></script>
+    <script src="/vendor/pubnub-angular/lib/pubnub-angular.js"></script>
+    <script src="//js.leapmotion.com/leap-0.6.3.min.js"></script>
+    <script src="//js.leapmotion.com/leap-plugins-0.1.9.js"></script>
+
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+   <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <script>
+      // PubNub config rendered server side so that config is in one place
+      var pubnubConfig = {
+        subscribe_key: '<%= subscribe_key %>',
+        channel: '<%= channel %>'
+      }
+    </script>
+
+  </head>
+  <body>
+
+
+    <!-- Container for the Angular application -->
+    <div id="tweet-hud" ng-controller="TweetHud">
+
+      <div id="header" class="header2">
+        <h1>Twitter Beats</h1>
+          <ul>
+            <li><a href="index">Home</a></li>
+           
+            <li><a href="mappage">Map</a></li>
+            <li  class="active"><a href="analysis">Analysis</a></li>
+            <li><a href="trendchart">Trends</a></li>
+
+            <li><a href="tools">Tools</a></li>
+            <li><a href="about">About Us</a></li>
+          </ul>
+      </div>
+
+
+
+            <div class="hud-panel hashmappart-panel">
+
+<div class="buttons twitterbuttons">
+
+<a  class="showSingle" target="1">Twitter Statistic 1</a>
+<a  class="showSingle" target="2">Twitter Statistic 2</a>
+<a  class="showSingle" target="3">Twitter Statistic 3</a>
+</div>
+
+<div id="container1" class="targetDiv" style="width: 700px; margin:0px auto;"></div>
+<div id="container2" class="targetDiv" style="width: 700px; margin:0px auto;"></div>
+<div id="container3" class="targetDiv" style="width: 700px; margin:0px auto;"></div>
+<div id="container4" class="targetDiv" style="display:none;"></div>
+<script type="text/javascript">
+    
+jQuery(function(){
+     
+        jQuery('.targetDiv').hide();
+        jQuery('.showSingle').click(function(){
+              jQuery('.targetDiv').hide();
+              jQuery('#container'+$(this).attr('target')).show();
+        });
+});
+
+</script>
+ 
+  
+
+      </div>
+
+
+
+<script language="JavaScript">
+$(function () {
+    Highcharts.chart('container4', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Twitter: Number of monthly active users 2010-2016'
+        },
+        subtitle: {
+            text: 'Source: <a href="https://www.statista.com/statistics/282087/number-of-monthly-active-twitter-users/">Statista</a>'
+        },
+        xAxis: {
+            type: 'category',
+            labels: {
+                rotation: -45,
+                style: {
+                    fontSize: '12px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Number of active users per Quarter (millions)'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            pointFormat: 'Active users : <b>{point.y:.1f} millions</b>'
+        },
+        series: [{
+            name: 'Population',
+            data: [
+                ['Q1 10', 30],
+                ['Q2 10', 40],
+                ['Q3 10', 49],
+                ['Q4 10', 54],
+                ['Q1 11', 68],
+                ['Q2 11', 85],
+                ['Q3 11', 101],
+                ['Q4 11', 117],
+                ['Q1 12', 138],
+                ['Q2 12', 151],
+                ['Q3 12', 167],
+                ['Q4 12', 185],
+                ['Q1 13', 204],
+                ['Q2 13', 218],
+                ['Q3 13', 231.7],
+                ['Q4 13', 241],
+                ['Q1 14', 255],
+                ['Q2 14', 271],
+                ['Q3 14', 284],
+                ['Q4 14', 288],
+                ['Q1 15', 302],
+                ['Q2 15', 304],
+                ['Q3 15', 307],
+                ['Q4 15', 305],
+                ['Q1 16', 310],
+                ['Q2 16', 313],
+                ['Q3 16', 317]
+            ],
+            dataLabels: {
+                enabled: true,
+                rotation: -90,
+                color: '#FFFFFF',
+                align: 'right',
+                format: '{point.y:.1f}', // one decimal
+                y: 10, // 10 pixels down from the top
+                style: {
+                    fontSize: '10px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        }]
+    });
+	
+	Highcharts.chart('container2', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Twitter: Number of followers of popular health & beauty brands and apparel brands 2016'
+        },
+        subtitle: {
+            text: 'Click the columns to view different brands. Source: <a href="https://www.statista.com/topics/737/twitter/">statista.com</a>.'
+        },
+        xAxis: {
+            type: 'category'
+        },
+        yAxis: {
+            title: {
+                text: 'Number of followers in millions'
+            }
+
+        },
+        legend: {
+            enabled: false
+        },
+        plotOptions: {
+            series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.y:.1f}million'
+                }
+            }
+        },
+
+        tooltip: {
+            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}</b> million<br/>'
+        },
+
+        series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: [{
+                name: 'Apparel',
+                y: 56.33,
+                drilldown: 'Apparel'
+            }, {
+                name: 'Health and Beauty',
+                y: 8.08,
+                drilldown: 'Health and Beauty'
+            }]
+        }],
+        drilldown: {
+            series: [{
+                name: 'Apparel',
+                id: 'Apparel',
+                data: [
+                    [
+                        'Chanel',
+                        12.53
+                    ],
+                    [
+                        'Victoria\'s Secret',
+                        10.26
+                    ],
+                    [
+                        'H&M',
+                        8.22
+                    ],
+                    [
+                        'Marc Jacobs',
+                        7.46
+                    ],
+                    [
+                        'Burberry',
+                        7.3
+                    ],
+                    [
+                        'Dior',
+                        7.08
+                    ],
+                    [
+                        'Louis Vuitton',
+                        5.84
+                    ],
+                    [
+                        'Dolce & Gabbana',
+                        4.3
+                    ],
+                    [
+                        'Gucci',
+                        3.89
+                    ],
+                    [
+                        'Yves Saint Laurent',
+                        3.82
+                    ]
+                ]
+            }, {
+                name: 'Health and Beauty',
+                id: 'Health and Beauty',
+                data: [
+                    [
+                        'MACcosmetics',
+                        1.3
+                    ],
+                    [
+                        'George Hane',
+                        0.95
+                    ],
+                    [
+                        'Urban Decay',
+                        0.94
+                    ],
+                    [
+                        'GFuel',
+                        0.91
+                    ],
+                    [
+                        'Benefit Cosmetics',
+                        0.75
+                    ],
+                    [
+                        'NYX Cosmetics',
+                        0.71
+                    ],
+                    [
+                        'Muscle Pharm',
+                        0.68
+                    ],
+                    [
+                        'ASQ Group',
+                        0.66
+                    ],
+                    [
+                        'Covergirl',
+                        0.6
+                    ],
+                    [
+                        'Maybelline New York',
+                        0.58
+                    ]
+                ]
+            }]
+        }
+    });
+	
+	
+	Highcharts.chart('container3', {
+        title: {
+            text: 'Twitter: Global visitor and audience reach 2014-2016',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Source: statista.com',
+            x: -20
+        },
+        xAxis: {
+            categories: ['Q2 14', 'Q3 14', 'Q4 14', 'Q1 15', 'Q2 15', 'Q3 15',
+                'Q4 15', 'Q1 16', 'Q2 16']
+        },
+        yAxis: {
+            title: {
+                text: 'Share of internet users'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: 'million'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: 'Twitter Visitors',
+            data: [40,37,39,37,37,39,36,35,39]
+        }, {
+            name: 'Active Users',
+            data: [23,22,22,21,20,25,22,22,22]
+        }]
+    });
+
+
+
+    Highcharts.chart('container1', {
+        chart: {
+            type: 'spline'
+        },
+        title: {
+            text: 'Candidate sentiment over time Nov 6th - Dec 6th'
+        },
+        subtitle: {
+            text: 'Ratio of number of positive tweets to negative tweets'
+        },
+        xAxis: {
+            type: 'datetime',
+            labels: {
+                overflow: 'justify'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Sentiment'
+            },
+            minorGridLineWidth: 0,
+            gridLineWidth: 0,
+            alternateGridColor: null,
+            plotBands: [{ // Negative
+                from: -0.5,
+                to: 0,
+                color: '#ff8080',
+                label: {
+                    text: 'Negative',
+                    style: {
+                        color: '#000000'
+                    }
+                }
+            }, { // Positive
+                from: 0,
+                to: 0.75,
+                color: '#b3ffb3',
+                label: {
+                    text: 'Positive',
+                    style: {
+                        color: '#000000'
+                    }
+                }
+            }]
+        },
+        tooltip: {
+            valueSuffix: ''
+        },
+        plotOptions: {
+            spline: {
+                lineWidth: 4,
+                states: {
+                    hover: {
+                        lineWidth: 5
+                    }
+                },
+                marker: {
+                    enabled: false
+                },
+                pointInterval: 259400000, // one hour
+                pointStart: Date.UTC(2016, 10, 6, 0, 0, 0)
+            }
+        },
+        series: [{
+            name: 'Trump',
+            color: '#ff0000',
+            data: [-0.08,0.14,-0.12,-0.20,-0.22,-0.32,0.06,-0.38,-0.10, -0.11,-0.14] }, {
+            name: 'Hillary',
+           color: '#0000ff',
+            data: [-0.16,0.16,-0.19,-0.11,-0.25,-0.42,0.47,-0.37,-0.30,-0.20,-0.06]
+        }],
+        navigation: {
+            menuItemStyle: {
+                fontSize: '10px'
+            }
+        }
+    });
+
+
+
+
+});
+</script>
+
+ 
+
+
+
+      <div id="header" style="bottom:0px; top: initial; height:35px;">
+       
+        <span id="twitter-dev" style="line-height:35px; margin: 0 0 0 35%; float:left;"><a href="https://dev.twitter.com">dev.twitter.com</a><span class="text-pipe">|</span><a href="https://twitter.com/intent/user?screen_name=TwitterDev">@TwitterDev</a></span>
+      </div>
+
+    </div>
+
+    <script src="/javascripts/shaders.js"></script>
+    <script src="/javascripts/TweetBeacon.js"></script>
+    <script src="/javascripts/LeapController.js"></script>
+    <script src="/javascripts/TwitterStreamGlobe.js"></script>
+    <script src="/javascripts/TweetHud.js"></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', '<%= ga_tracking_id %>', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </body>
+</html>
