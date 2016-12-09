@@ -51,7 +51,8 @@
       }
     </script>
     
-<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<!--<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>-->
+<script src="/lib/d3/d3.js"></script>
 <script src="/js/d3.layout.cloud.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="/js/wordgraphs.js"></script>
@@ -98,10 +99,9 @@
         <div id="trends-panel" class="sub-panel">
           <h2>Trends</h2>
           <ul>
-
-            
             <li ng-repeat="trend in trends" class="trend-item">
               <a href="{{trend.url}}" target="_blank">{{trend.name}}</a>
+
             </li>
 
           </ul>
