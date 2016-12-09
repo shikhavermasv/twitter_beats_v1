@@ -20,7 +20,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 #github{font-size:12px;color:#666}#github a{color:#55ACEE}#github a:hover{text-decoration:underline}#upgrade{margin:50px;font-weight:300}#upgrade h1{font-size:32px;margin-bottom:10px}#upgrade a{color:#55ACEE;text-decoration:underline}
 
 .tweetscount h6, .tweetscount h6 span#sentiment-value{ font-size: 24px; line-height: 35px; }
-#tweet-hud .wordcloud-panel{ width: 60%; border: 1px solid #fff; height: 500px; text-align: center; }
+#tweet-hud .wordcloud-panel{ width: 60%; height: 500px; text-align: center; }
 #tweet-hud .hashmappart-panel{ width: 80%; border: 1px solid #fff; height: 500px; left: 10%; }
 .twitterbuttons { width: 100%; text-align: center; margin: 10px 0;}
 .twitterbuttons a.showSingle{ margin: 10px 10px; font-size: 18px; cursor: pointer;}

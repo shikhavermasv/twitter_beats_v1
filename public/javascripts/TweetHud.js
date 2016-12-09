@@ -36,11 +36,16 @@ app.controller('TweetHud', function($scope, $resource, $timeout, $rootScope, $ti
    * GET request trends every TREND_POLL_INTERVAL and sets them on binded model
    */
   function getTrends () {
-
     $scope.trendsResource = $resource('/trends');
+      var arr=[];
 
     $scope.trendsResource.query( { }, function (res) {
-      $scope.trends = res;
+      $scope.trends = res
+      for(i=0;i<res.length;i++){
+              arr.push(res[i].name);      
+      }
+      console.log(arr);
+      getarr(arr);
     });
 
     $timeout(function () {
@@ -48,6 +53,63 @@ app.controller('TweetHud', function($scope, $resource, $timeout, $rootScope, $ti
     }, TREND_POLL_INTERVAL);
   }
 
+function getarr(arr){
+  var arr2=[];
+    for(i=0;i<20;i++){
+      arr2.push(arr[i]);
+      }
+console.log("hiii");
+console.log(arr2);
+      var width =1200,
+height=400;
+var wordScale=d3.scale.linear().range([10,60]);
+var fill = d3.scale.category20();
+var x=10;
+      var strarr2= arr2.map(function(d) {
+        x--;
+       return {text: d, size: x-3};
+     });
+ d3.select("svg").remove();
+wordScale
+.domain([d3.min(strarr2,function(d){
+return d.size;
+
+}),
+d3.max(strarr2,function(d){
+return d.size;
+
+})
+]);
+    d3.layout.cloud().size([width, height])
+      .words(strarr2)
+      //.rotate(function() { return ~~(Math.random() * 2) * 90; })
+      .font("Impact")
+      .fontSize(function(d) { return wordScale(d.size); })
+      .on("end", draw)
+      .start();
+
+  function draw(words) {
+
+    d3.select("#word-cloud").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+      .append("g")
+        .attr("transform", "translate("+(width/2)+","+(height/2)+")")
+      .selectAll("text")
+        .data(words)
+      .enter().append("text")
+        .style("font-size", function(d) { return d.size + "px"; })
+        .style("font-family", "Impact")
+        .style("fill", function(d, i) { return fill(i); })
+        .attr("text-anchor", "middle")
+        .attr("transform", function(d) {
+          return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+        })
+        .text(function(d) { return d.text; });
+  }
+  
+
+    }
   /**
    * Adds Tweet data to binded model
    */
