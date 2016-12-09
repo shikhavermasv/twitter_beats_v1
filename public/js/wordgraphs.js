@@ -6,9 +6,14 @@ var fill = d3.scale.category20();
 function getText(){
   var cloudarr =[];
   var arr=document.getElementsByTagName("a");
+  var arr1= Array.prototype.slice.call(arr)
+
   console.log(arr);
+  console.log(arr2);
+
   for( i=6; i< 40; i++){
-    console.log(arr[i].innerHTML);
+    var test = arr2[i].innerHTML;
+    console.log(test);
   }
   for(i=6; i<40; i++){
     var trendnameprint = document.getElementsByTagName("a")[i].innerHTML;
@@ -25,7 +30,7 @@ var x=60;
     var strarr = cloudarr;
     console.log(cloudarr);
     	var strarr2= cloudarr.map(function(d) {
-    x--;
+        x--;
        return {text: d, size: x-3};
      });
  d3.select("svg").remove();
