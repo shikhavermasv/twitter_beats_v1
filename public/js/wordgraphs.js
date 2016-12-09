@@ -20,7 +20,8 @@ var x=60;
  // alert(cloudarr[9]);
 	//var userinput = "銀シャリ #علبه_الدخان_ب26ريال #MilanCrotone #FelizDomingo #trombaMLG #زد_رصيدك50 Betis Niang ハライチ Piero Pelù #VemPraRuaBrasil #당신의_크리스마스_스케줄 #وفاه_المعلمه_اماني_السفياني #真田丸 #DomingoComVoceSabiaSDV #PodemosEsViolencia #gegarvaganza #LabanLeni #4AralıkDünyaMadencilerGünü #YanlızDeğilsinERDOĞAN #4DeDiciembre #MarchaDosPatinhosPamonhas #안치이는_요소 #봉봉_정신연령테스트 #BOULIV #세븐틴_너_때문에_붐붐 #شي_حلو_واختفي#خطيب_يستنكر_انتشار_شاهي_الجمر #BoybandPHLastElim #مسيره_الاتحاد #buitenhof #IQ24";
     var strarr = cloudarr;
-	var strarr2= strarr.map(function(d) {
+    console.log(cloudarr);
+    	var strarr2= cloudarr.map(function(d) {
     x--;
        return {text: d, size: x-3};
      });
