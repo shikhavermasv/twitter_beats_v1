@@ -7,6 +7,9 @@ function getText(){
   var cloudarr =[];
   var arr=document.getElementsByTagName("a");
   console.log(arr);
+  for( i=6; i< 40; i++){
+    console.log(arr[i].innerHTML);
+  }
   for(i=6; i<40; i++){
     var trendnameprint = document.getElementsByTagName("a")[i].innerHTML;
     cloudarr.push(trendnameprint);
