@@ -9,10 +9,10 @@ function getText(){
   var arr1= Array.prototype.slice.call(arr)
 
   console.log(arr);
-  console.log(arr2);
+  console.log(arr1);
 
   for( i=6; i< 40; i++){
-    var test = arr2[i].innerHTML;
+    var test = arr1[i].innerHTML;
     console.log(test);
   }
   for(i=6; i<40; i++){
