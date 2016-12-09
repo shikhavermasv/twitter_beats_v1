@@ -330,9 +330,11 @@ $(function () {
             borderWidth: 0
         },
         series: [{
+            color:'#ff0080',
             name: 'Twitter Visitors',
             data: [40,37,39,37,37,39,36,35,39]
         }, {
+            color: '#0000ff',
             name: 'Active Users',
             data: [23,22,22,21,20,25,22,22,22]
         }]
@@ -345,7 +347,7 @@ $(function () {
             type: 'spline'
         },
         title: {
-            text: 'Candidate sentiment over time Nov 6th - Dec 6th'
+            text: 'Twitter: Candidate sentiment over time Oct 27th - Dec 6th'
         },
         subtitle: {
             text: 'Ratio of number of positive tweets to negative tweets'
@@ -399,8 +401,8 @@ $(function () {
                 marker: {
                     enabled: false
                 },
-                pointInterval: 259400000, // one hour
-                pointStart: Date.UTC(2016, 10, 6, 0, 0, 0)
+                pointInterval: 345600000, // one hour
+                pointStart: Date.UTC(2016, 9, 27, 0, 0, 0)
             }
         },
         series: [{
