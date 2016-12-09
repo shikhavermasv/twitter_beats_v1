@@ -10,6 +10,13 @@ function getText(){
 
   console.log(arr);
   console.log(arr1);
+  var ptext=document.getElementById("trend1").innerHTML;
+  var ptext1=document.getElementById("trend2").innerHTML;
+  var ptext2=document.getElementById("trend3").innerHTML;
+  var parr =[];
+  parr.push(ptext);
+    parr.push(ptext1);
+  parr.push(ptext2);
 
   // for( i=6; i< 40; i++){
   //   var test = arr1[i].innerHTML;
@@ -30,7 +37,7 @@ var x=60;
     var strarr = userinput.split(" ");  
     //var strarr = cloudarr;
    // console.log(cloudarr);
-    	var strarr2= strarr.map(function(d) {
+    	var strarr2= parr.map(function(d) {
         x--;
        return {text: d, size: x-3};
      });
