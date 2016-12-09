@@ -92,7 +92,7 @@
 <a  class="showSingle" target="3">Twitter Statistic 3</a>
 </div>
 
-<div id="container1" class="targetDiv" style="width: 700px; margin:0px auto;"></div>
+<div id="container1" class="targetDiv" style="width: 700px; margin:0px auto; display:block;"></div>
 <div id="container2" class="targetDiv" style="width: 700px; margin:0px auto;"></div>
 <div id="container3" class="targetDiv" style="width: 700px; margin:0px auto;"></div>
 <div id="container4" class="targetDiv" style="display:none;"></div>
@@ -100,7 +100,7 @@
     
 jQuery(function(){
      
-        jQuery('.targetDiv').hide();
+        //jQuery('.targetDiv').hide();
         jQuery('.showSingle').click(function(){
               jQuery('.targetDiv').hide();
               jQuery('#container'+$(this).attr('target')).show();
@@ -285,11 +285,11 @@ $(function () {
                     ],
                     [
                         'Unspecified Individual',
-                        27
+                        23
                     ],
                     [
                         'Organisations',
-                        25
+                        21
                     ]
                 ]
             }]
