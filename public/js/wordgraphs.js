@@ -5,11 +5,11 @@ var fill = d3.scale.category20();
 
 function getText(){
   var cloudarr =[];
+  var arr=document.getElementsByTagName("a");
+  console.log(arr);
   for(i=6; i<40; i++){
-  var trendnameprint = document.getElementsByTagName("a")[i].innerHTML;
-  
-cloudarr.push(trendnameprint);
-
+    var trendnameprint = document.getElementsByTagName("a")[i].innerHTML;
+    cloudarr.push(trendnameprint);
   }
 //   for(j=0; j<cloudarr.length; j++){
 // alert(cloudarr[j]);
