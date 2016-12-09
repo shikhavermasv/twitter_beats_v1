@@ -11,14 +11,14 @@ function getText(){
   console.log(arr);
   console.log(arr1);
 
-  for( i=6; i< 40; i++){
-    var test = arr1[i].innerHTML;
-    console.log(test);
-  }
-  for(i=6; i<40; i++){
-    var trendnameprint = document.getElementsByTagName("a")[i].innerHTML;
-    cloudarr.push(trendnameprint);
-  }
+  // for( i=6; i< 40; i++){
+  //   var test = arr1[i].innerHTML;
+  //   console.log(test);
+  // }
+  // for(i=6; i<40; i++){
+  //   var trendnameprint = document.getElementsByTagName("a")[i].innerHTML;
+  //   cloudarr.push(trendnameprint);
+  // }
 //   for(j=0; j<cloudarr.length; j++){
 // alert(cloudarr[j]);
 
@@ -29,7 +29,7 @@ var x=60;
 	  var userinput = "銀シャリ #علبه_الدخان_ب26ريال #MilanCrotone #FelizDomingo #trombaMLG #زد_رصيدك50 Betis Niang ハライチ Piero Pelù #VemPraRuaBrasil #당신의_크리스마스_스케줄 #وفاه_المعلمه_اماني_السفياني #真田丸 #DomingoComVoceSabiaSDV #PodemosEsViolencia #gegarvaganza #LabanLeni #4AralıkDünyaMadencilerGünü #YanlızDeğilsinERDOĞAN #4DeDiciembre #MarchaDosPatinhosPamonhas #안치이는_요소 #봉봉_정신연령테스트 #BOULIV #세븐틴_너_때문에_붐붐 #شي_حلو_واختفي#خطيب_يستنكر_انتشار_شاهي_الجمر #BoybandPHLastElim #مسيره_الاتحاد #buitenhof #IQ24";
     var strarr = userinput.split(" ");  
     //var strarr = cloudarr;
-    console.log(cloudarr);
+   // console.log(cloudarr);
     	var strarr2= strarr.map(function(d) {
         x--;
        return {text: d, size: x-3};
